@@ -1,0 +1,21 @@
+{
+  "name": "Runway",
+  "version": "0.1.0",
+  "description": "For your models",
+  "main": "lib/runway.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/davidcornu/Runway.git"
+  },
+  "dependencies": {
+    "lodash": "0.7.x"
+  },
+  "devDependencies": {
+    "coffee-script": "1.3.x",
+    "mocha": "1.4.x",
+    "jake": "0.3.x"
+  },
+  "keywords": ["MVC", "ORM", "Model"],
+  "author": "David Cornu <david@davidcornu.com>",
+  "license": "BSD"
+}
