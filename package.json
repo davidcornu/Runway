@@ -2,7 +2,7 @@
   "name": "Runway",
   "version": "0.1.0",
   "description": "For your models",
-  "main": "lib/runway.js",
+  "main": "lib/runway",
   "repository": {
     "type": "git",
     "url": "git://github.com/davidcornu/Runway.git"
