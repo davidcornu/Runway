@@ -1,3 +1,3 @@
 module.exports =
-  schema: require('./schema')
-  model:  require('./model')
+  Schema: require('./schema')
+  Model:  require('./model')
