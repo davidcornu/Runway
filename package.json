@@ -17,5 +17,8 @@
   },
   "keywords": ["MVC", "ORM", "Model"],
   "author": "David Cornu <david@davidcornu.com>",
-  "license": "BSD"
+  "license": "BSD",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  }
 }
