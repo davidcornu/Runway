@@ -1,8 +1,8 @@
-errors = require('../errors')
-Type   = require('./type')
-_      = require('lodash')
+errors     = require('./errors')
+RunwayType = require('./type')
+_          = require('lodash')
 
-class Number extends Type
+class RunwayNumber extends RunwayType
 
   isCorrectType: _.isNumber
 
@@ -21,4 +21,4 @@ class Number extends Type
 
     return attempt
 
-module.exports = Number
+module.exports = RunwayNumber

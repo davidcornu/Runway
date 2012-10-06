@@ -1,7 +1,7 @@
 _      = require('lodash')
-errors = require('../errors')
+errors = require('./errors')
 
-class Type
+class RunwayType
 
   default: -> null
 
@@ -26,4 +26,4 @@ class Type
 
   isBlank: -> !@value
 
-module.exports = Type
+module.exports = RunwayType

@@ -1,8 +1,8 @@
-errors = require('../errors')
-Type   = require('./type')
-_      = require('lodash')
+errors     = require('./errors')
+RunwayType = require('./type')
+_          = require('lodash')
 
-class Boolean extends Type
+class RunwayBoolean extends RunwayType
 
   isCorrectType: _.isBoolean
 
@@ -19,4 +19,4 @@ class Boolean extends Type
       else
         throw new errors.ConversionError
 
-module.exports = Boolean
+module.exports = RunwayBoolean

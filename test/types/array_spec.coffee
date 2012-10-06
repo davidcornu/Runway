@@ -4,26 +4,32 @@ _       = require('lodash')
 
 baseDir = path.resolve(__dirname, '../../')
 
-Array   = require(path.join(baseDir, 'lib', 'runway', 'types', 'array'))
-errors  = require(path.join(baseDir, 'lib', 'runway', 'errors'))
+RunwayArray = require(path.join(baseDir, 'lib', 'runway', 'types', 'array'))
+errors      = require(path.join(baseDir, 'lib', 'runway', 'types', 'errors'))
 
-describe 'Array', ->
+describe 'RunwayArray', ->
 
-  it 'can be created with an array', ->
-    a = new Array([1,2,3])
+  it 'can be created with an Array', ->
+    a = new RunwayArray([1,2,3])
     assert(_.isArray(a.value))
 
-  it 'defaults to an empty array', ->
-    a = new Array()
+  it 'defaults to an empty Array', ->
+    a = new RunwayArray()
     assert(_.isArray(a.value))
     assert(a.value.length == 0)
 
-  it 'cannot be created with anything but an array', ->
-    for intruder in [new Date, new Function, {}, "", true]
+  it 'coerces booleans, numbers and strings into arrays', ->
+    for value in ["hello", true, 14]
+      a = new RunwayArray(value)
+      assert(_.isArray(a.value))
+      assert(a.value[0] == value)
+
+  it 'cannot be created with a date, function or object', ->
+    for intruder in [new Date, new Function, {}]
       assert.throws ->
-        a = new Array(intruder)
+        a = new RunwayArray(intruder)
       , errors.ConversionError
 
   it 'should return correct result for isBlank', ->
-    a = new Array()
+    a = new RunwayArray()
     assert(a.isBlank())

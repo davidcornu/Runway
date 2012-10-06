@@ -3,11 +3,11 @@ path    = require('path')
 
 baseDir = path.resolve(__dirname, '../../')
 
-Type    = require(path.join(baseDir, 'lib', 'runway', 'types', 'type'))
-errors  = require(path.join(baseDir, 'lib', 'runway', 'errors'))
+RunwayType = require(path.join(baseDir, 'lib', 'runway', 'types', 'type'))
+errors     = require(path.join(baseDir, 'lib', 'runway', 'types', 'errors'))
 
-describe 'Type', ->
+describe 'RunwayType', ->
 
   it 'has a null value if nothing is passed', ->
-    n = new Type()
+    n = new RunwayType()
     assert(n.value == null)

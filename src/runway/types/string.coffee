@@ -1,8 +1,8 @@
-errors = require('../errors')
-Type   = require('./type')
-_      = require('lodash')
+errors     = require('./errors')
+RunwayType = require('./type')
+_          = require('lodash')
 
-class String extends Type
+class RunwayString extends RunwayType
 
   default: -> ''
 
@@ -14,15 +14,6 @@ class String extends Type
     else
       throw new errors.ConversionError
 
-    stripped = thing.replace(/\s+/g, '')
-
-    switch stripped
-      when 'true'
-        return true
-      when 'false'
-        return false
-      else
-
   isBlank: -> @value.length == 0
 
-module.exports = String
+module.exports = RunwayString
