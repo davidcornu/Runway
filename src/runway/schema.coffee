@@ -1,8 +1,7 @@
 _           = require('lodash')
 types       = require('./types')
-errors      = require('./errors')
 
-validTypes = _.keys(types)
+validTypes = _.map(_.keys(types), (t) -> t.replace(/Runway/, ''))
 
 class Schema
 
@@ -14,14 +13,9 @@ class Schema
   add: (structure) ->
     for attribute, type of structure
       if type in validTypes
-        @mapping[attribute] = types[type]
+        @mapping[attribute] = types['Runway' + type]
       else if _.isObject(type)
-        try
-          @mapping[attribute] = new Schema(type)
-        catch e
-          e.message = attribute + ": " + e.message
-          throw e
-
+        @mapping[attribute] = new Schema(type)
       else
         throw new errors.AttributeError(attribute)
 
@@ -35,27 +29,3 @@ class Schema
     @validations.push(callback)
 
 module.exports = Schema
-
-s = new Schema
-  firstName: 'String'
-  lastName:  'String'
-  single:    'Boolean'
-  age:       'Number'
-  preferences:
-    receiveNewsletter: 'Boolean'
-    makeProfilePublic: 'Boolean'
-
-asyncValidation = (options) ->
-  return (model, done) ->
-    setTimeout ->
-      console.log 'Async validation done!'
-      done()
-
-syncValidation = (options) ->
-  return (model) ->
-    return
-
-s.addValidation(asyncValidation('doodah'))
-s.addValidation(syncValidation('day'))
-
-console.log s
